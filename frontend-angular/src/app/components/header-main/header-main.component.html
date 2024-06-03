@@ -1,0 +1,83 @@
+@if (!dataSelect?.seasons) {
+  <div class="header-main">
+    <div class="container-header-main">
+      <h1>{{ dataSelect?.title | uppercase }}</h1>
+      <div class="description-movie">
+        <p>{{ dataSelect?.description }}</p>
+      </div>
+      <div class="description-two-movie">
+        <h4>{{ dataSelect?.date | date : "yyyy" }}</h4>
+        <div class="figure-rating">
+          <div class="figure-start-img">
+            <img src="assets/imgs/star.png" alt="estrella" />
+          </div>
+          <h4>{{ dataSelect?.rating }}</h4>
+        </div>
+        @if (seriesActivate) {
+        <div
+          routerLinkActive="active"
+          [routerLink]="['/watchSeries', dataSelect?.id]"
+          class="container-button-watch"
+        >
+          <div class="figure-video-img">
+            <img src="assets/imgs/show-more.png" alt="mas" />
+          </div>
+          <h4>Mas</h4>
+        </div>
+        } @else {
+        <div
+          [routerLink]="['/watchMovies', dataSelect?.id]" 
+          routerLinkActive="active" 
+          class="container-button-watch"
+        >
+          <div class="figure-video-img">
+            <img src="assets/imgs/icon-video.png" alt="mirar" />
+          </div>
+          <h4>Mirar</h4>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+} @else {
+  <div class="header-main">
+    <div class="container-header-main">
+      <h1>{{ dataSelect.seasons[0].title | uppercase }}</h1>
+      <div class="description-movie">
+        <p>{{ dataSelect.seasons[0].description }}</p>
+      </div>
+      <div class="description-two-movie">
+        <h4>{{ dataSelect.seasons[0].date | date : "yyyy" }}</h4>
+        <div class="figure-rating">
+          <div class="figure-start-img">
+            <img src="assets/imgs/star.png" alt="estrella" />
+          </div>
+          <h4>{{ dataSelect.seasons[0].rating }}</h4>
+        </div>
+        @if (seriesActivate) {
+        <div
+          routerLinkActive="active"
+          [routerLink]="['/watchSeries', dataSelect.id]"
+          class="container-button-watch"
+        >
+          <div class="figure-video-img">
+            <img src="assets/imgs/show-more.png" alt="mas" />
+          </div>
+          <h4>Mas</h4>
+        </div>
+        } @else {
+        <div
+          [routerLink]="['/watchMovies', dataSelect.id]" 
+          routerLinkActive="active" 
+          class="container-button-watch"
+        >
+          <div class="figure-video-img">
+            <img src="assets/imgs/icon-video.png" alt="mirar" />
+          </div>
+          <h4>Mirar</h4>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+}

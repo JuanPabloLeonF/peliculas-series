@@ -1,0 +1,46 @@
+<section class="container-section">
+  <div class="container-section-one">
+    <div class="container-item">
+      <h3>Perfil</h3>
+      <div class="container-img-open" (click)="onMenu()">
+        <img src="assets/imgs/close-arrow.png" alt="abrir" />
+      </div>
+    </div>
+    <div class="container-button" (click)="onLogout()">
+        <h3>Cerrar Sesion</h3>
+        <div class="container-img-button">
+            <img src="assets/imgs/close-sing.png" alt="Cerrar Sesion">
+        </div>
+    </div>
+  </div>
+  <div class="container-section-two">
+    <div class="container-details-basic">
+      <div class="container-img">
+        <img [src]="baseUrl + user?.image" [alt]="user?.username" />
+      </div>
+      <h3>{{ user?.name }}</h3>
+    </div>
+    <div class="container-details-user">
+      <div class="container-item-user">
+        <h3>USUARIO</h3>
+        <h3>{{ user?.username }}</h3>
+      </div>
+      <div class="container-item-user">
+        <h3>NOMBRE</h3>
+        <h3>{{ user?.name }}</h3>
+      </div>
+      <div class="container-item-user">
+        <h3>CORREO</h3>
+        <h3>{{ user?.email }}</h3>
+      </div>
+      <div class="container-item-user">
+        <h3>CONTRASEÑA</h3>
+        <h3>{{ user?.password }}</h3>
+      </div>
+      <div class="container-item-user">
+        <h3>ADMINISTRADOR</h3>
+        <h3>{{ user?.admin ? "SI" : "NO" }}</h3>
+      </div>
+    </div>
+  </div>
+</section>

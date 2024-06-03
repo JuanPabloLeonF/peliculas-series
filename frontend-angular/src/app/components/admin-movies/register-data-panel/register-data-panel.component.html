@@ -1,0 +1,154 @@
+<div class="container-register-data">
+  <form
+    class="container-register"
+    [ngClass]="{
+      'container-register-part2': activateSectionFormulary.part2
+    }"
+    [formGroup]="formularyRegisterData"
+    (submit)="onSubmit($event)"
+  >
+    @if (activateSectionFormulary.part1) {
+      <div class="div-form">
+        <div class="input-item-div">
+          <h2>Registrar Pelicula</h2>
+        </div>
+        <div
+          class="input-item-div"
+          [ngClass]="{
+            'is-invalid':
+              hasError('title', 'required') ||
+              hasError('title', 'minlength') ||
+              hasError('title', 'maxlength')
+          }"
+        >
+          <input type="text" placeholder="TITULO" formControlName="title" />
+          <div class="img-item-input">
+            <img src="assets/imgs/movies.png" alt="titulo" />
+          </div>
+        </div>
+        <div
+          class="input-item-div"
+          [ngClass]="{
+            'is-invalid': hasError('category', 'required')
+          }"
+        >
+          <select class="select" formControlName="category" multiple>
+            <option value="" disabled selected>CATEGORIAS</option>
+            @for(category of listCategories; track $index) {
+              <option [value]="category">{{category | uppercase}}</option>
+            }
+          </select>
+          <div class="img-item-input">
+            <img style="z-index: 5;" src="assets/imgs/categorise.png" alt="categorias" />
+          </div>
+        </div>
+        <div
+          class="input-item-div"
+          [ngClass]="{
+            'is-invalid': hasError('date', 'required')
+          }"
+        >
+          <input type="date" formControlName="date" />
+        </div>
+        <div
+          class="input-item-div"
+          [ngClass]="{
+            'is-invalid':
+              hasError('rating', 'required') ||
+              hasError('rating', 'pattern') ||
+              hasError('rating', 'invalidRating')
+          }"
+        >
+          <input
+            class="number-input"
+            type="number"
+            placeholder="RATING"
+            formControlName="rating"
+            step="0.1"
+          />
+          <div class="img-item-input">
+            <img src="assets/imgs/rating.png" alt="rating" />
+          </div>
+        </div>
+        <div
+          class="input-item-div"
+          [ngClass]="{
+            'is-invalid': 
+            hasError('description', 'required') ||
+            hasError('description', 'minlength')
+          }"
+        >
+          <textarea
+            placeholder="DESCRIPCION"
+            formControlName="description"
+          ></textarea>
+        </div>
+        <div class="input-item-div">
+          <input
+            class="submit"
+            type="button"
+            value="Continuar"
+            (click)="onContinue()"
+          />
+        </div>
+      </div>
+      <div class="container-close-x" (click)="closePanelData(false)">
+        <img src="assets/imgs/close-x.png" alt="cerrar" />
+      </div>
+    } @else if (activateSectionFormulary.part2) {
+      <div class="div-form">
+        <div class="input-item-div">
+          <h2>Multimedia</h2>
+        </div>
+        <div
+          class="input-item-div"
+          [ngClass]="{
+            'is-invalid':
+              hasError('image', 'required')
+          }"
+        >
+          <input type="file" id="image" formControlName="image" accept="image/*" (change)="onFileChangeImage($event)" />
+          <label for="image">{{stringFileImage}}</label>
+          <div class="img-item-input">
+            <img src="assets/imgs/image.png" alt="portada" />
+          </div>
+        </div>
+        <div
+          class="input-item-div"
+          [ngClass]="{
+            'is-invalid': hasError('trailerVideo', 'required')
+          }"
+        >
+          <input type="file" id="trailerVideo" formControlName="trailerVideo" accept="video/*" (change)="onFileChangeTrailerVideo($event)" />
+          <label for="trailerVideo">{{stringFileTrailerVideo}}</label>
+          <div class="img-item-input">
+            <img src="assets/imgs/trailer-video.png" alt="trailer" />
+          </div>
+        </div>
+        <div
+          class="input-item-div"
+          [ngClass]="{
+            'is-invalid':
+              hasError('video', 'required')
+          }"
+        >
+        <input type="file" id="video" formControlName="video" accept="video/*" (change)="onFileChangeVideo($event)" />
+        <label for="video">{{stringFileVideo}}</label>
+          <div class="img-item-input">
+            <img src="assets/imgs/video.png" alt="video" />
+          </div>
+        </div>
+        <div class="input-item-div">
+          <input
+            class="submit"
+            type="submit"
+            value="Registrar Pelicula"
+          />
+        </div>
+      </div>
+      <div class="container-close-x" (click)="goBack()">
+        <img style="filter: invert(1);" src="assets/imgs/close-arrow.png" alt="volver" />
+      </div>
+    }
+  </form>
+</div>

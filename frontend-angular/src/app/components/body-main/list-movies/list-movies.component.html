@@ -1,0 +1,28 @@
+<div class="container-list-movies">
+  <div class="list-movie">
+    @for (data of listDataByCategory; track $index) {
+      @if (!data.seasons) {
+        <div
+        class="item-movie"
+        [style.transform]="'translateX(' + -selectedIndex * 150 + 'px)'"
+      >
+        <img [src]="baseUrlMovies + data.image" [alt]="data.title" (click)="getData(data)" />
+      </div>
+      } @else {
+        <div
+        class="item-movie"
+        [style.transform]="'translateX(' + -selectedIndex * 150 + 'px)'"
+      >
+        <img [src]="baseUrlSeries + data.seasons[0].img" [alt]="data.seasons[0].title" (click)="getData(data)" />
+      </div>
+      }
+    }
+  </div>
+  <span class="title-category">{{ nameCategory | uppercase }}</span>
+  <div class="container-button-carousel-left" (click)="changeIndex(-1)">
+    <img src="assets/imgs/close-arrow.png" alt="izquierda" />
+  </div>
+  <div class="container-button-carousel-right" (click)="changeIndex(1)">
+    <img src="assets/imgs/close-arrow.png" alt="derecha" />
+  </div>
+</div>

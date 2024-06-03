@@ -1,0 +1,14 @@
+<main class="main">
+  <video
+    [src]="baseUrl + movieDataSelected.trailerVideo"
+    autoplay
+    loops
+  ></video>
+  <app-header-main
+    [dataSelect]="movieDataSelected"
+  />
+  <app-body-main
+    [listData]="listMovies"
+    (selectedData)="onMovieSelected($event)"
+  />
+</main>

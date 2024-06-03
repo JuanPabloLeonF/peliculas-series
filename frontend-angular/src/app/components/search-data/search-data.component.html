@@ -1,0 +1,41 @@
+<div class="container-search-data">
+  @for(data of filteredData; track $index) {
+    @if (!data.seasons) {
+      <div class="items-list-data" (click)="getData(data)">
+        <div class="items-list-data-separetor">
+          <div class="img-container-item">
+            <img [src]="baseUrlMovies + data.image" [alt]="data.title" />
+          </div>
+          <div class="text-container-item">
+            <h3>{{ data.title | uppercase }}</h3>
+            <h3>{{ data.date | date : "yyyy" }}</h3>
+            <div class="container-button-watch">
+              <div class="figure-video-img">
+                <img src="assets/imgs/icon-video.png" alt="mirar" />
+              </div>
+              <h3>{{ data.rating }}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    } @else {
+      <div class="items-list-data" (click)="getData(data)">
+        <div class="items-list-data-separetor">
+          <div class="img-container-item">
+            <img [src]="baseUrlSeries + data.seasons[0].img" [alt]="data.seasons[0].title" />
+          </div>
+          <div class="text-container-item">
+            <h3>{{ data.seasons[0].title | uppercase }}</h3>
+            <h3>{{ data.seasons[0].date | date : "yyyy" }}</h3>
+            <div class="container-button-watch">
+              <div class="figure-video-img">
+                <img src="assets/imgs/icon-video.png" alt="mirar" />
+              </div>
+              <h3>{{ data.seasons[0].rating }}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  }
+</div>

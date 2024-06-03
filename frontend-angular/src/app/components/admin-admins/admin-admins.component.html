@@ -1,0 +1,85 @@
+<section class="container-section">
+    @if (showRegisterPanel) {
+        <app-register-admin (closePanel)="onRegisterDataPanel($event)" />
+    }
+
+    @if (showUpdateDataPanel) {
+        <app-update-admin (closePanel)="onUpdateDataPanel($event)" [userSelected]="userSelected" />
+    }
+
+
+    <div class="container-section-one">
+        <div class="container-item">
+            <h3>Usuarios & Administradores ( {{listUsers.length}} )</h3>
+            <div class="container-img-open" (click)="onMenu()">
+                <img src="assets/imgs/close-arrow.png" alt="abrir">
+            </div>
+        </div>
+        <div class="container-item">
+            <div class="container-selects">
+                <select [(ngModel)]="valueSelect" (ngModelChange)="onChangeSelectValue()">
+                    <option value="ALL">TODOS</option>
+                    @for (selects of listUsersSelects; track $index) {
+                        <option [value]="selects">{{selects | uppercase}}</option>
+                    }
+                </select>
+            </div>
+            <div class="search-data">
+                <input type="text" placeholder="Buscar..." [(ngModel)]="searchValue" (ngModelChange)="onChangeSearchValue()"/>
+            </div> 
+            <div class="container-img-add-data" (click)="onRegisterDataPanel(true)">
+                <img src="assets/imgs/show-more.png" alt="agregar">
+            </div>
+        </div>
+    </div>
+    <div class="container-section-two">
+        <div class="container-movies">
+            @for(user of listUsers; track $index) {
+                <div class="movie" (click)="onUpdateDataUser(user)">
+                    <div class="container-header">
+                        <div class="container-img">
+                            @if (user.image) {
+                                <img [src]="baseUrl + user.image" [alt]="user.name" />
+                            } @else {
+                            <img src="assets/imgs/Persona-incognita.webp" [alt]="user.name" />
+                            }
+                        </div>
+                        <h3>{{user.name}}</h3>
+                    </div>
+                    <div class="container-body">
+                        <div class="items-information">
+                            <div class="container-information-img">
+                                <div class="container-img-body" style="filter: invert(1);">
+                                    <img style="width: 2rem;" src="assets/imgs/user-logo.png" alt="usuario">
+                                </div>
+                                <h3>Usuario</h3>
+                            </div>
+                            <h3>{{user.username}}</h3>
+                        </div>
+                        <div class="items-information">
+                            <div class="container-information-img">
+                                <div class="container-img-body" style="filter: invert(1);">
+                                    <img src="assets/imgs/email-logo.png" alt="correo">
+                                </div>
+                                <h3>Correo</h3>
+                            </div>
+                            <h3>{{user.email}}</h3>
+                        </div>
+                        <div class="items-information">
+                            <div class="container-information-img">
+                                <div class="container-img-body">
+                                    <img src="assets/imgs/admin.png" alt="admin">
+                                </div>
+                                <h3>Administrador</h3>
+                            </div>
+                            <h4>{{user.admin ? "Si" : "No"}}</h4>
+                        </div>
+                    </div>
+                    <div class="container-button-delete" title="Eliminar pelicula" (click)="onDeleteData($event, user.id)">
+                        <img src="assets/imgs/trash.png" alt="borrar">
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

@@ -1,0 +1,303 @@
+@if (activateSectionFormulary.part3) {
+<div class="container-register-data-part3">
+  @for ( number of numberVideos;track $index) {
+  <form
+    class="container-register-part3"
+    [formGroup]="formularyRegisterDataChapter"
+    (submit)="onSubmitFormularyRegisterDataChapter($event)"
+    [style.transform]="'translateX(' + -selectedIndex * 58 + 'rem)'"
+  >
+    <div class="div-form">
+      <div class="input-item-div">
+        <h2>ACTUALIZAR CAPITULO {{ $index + 1 }}</h2>
+      </div>
+      <div
+        class="input-item-div"
+        [ngClass]="{
+          'is-invalid':
+            hasErrorFormularyRegisterDataChapter('titleChapter', 'required') ||
+            hasErrorFormularyRegisterDataChapter('titleChapter', 'minlength') ||
+            hasErrorFormularyRegisterDataChapter('titleChapter', 'maxlength')
+        }"
+      >
+        <input
+          type="text"
+          placeholder="TITULO"
+          formControlName="titleChapter"
+        />
+        <div class="img-item-input">
+          <img src="assets/imgs/movies.png" alt="titulo" />
+        </div>
+      </div>
+      <div
+        class="input-item-div"
+        [ngClass]="{
+          'is-invalid': hasErrorFormularyRegisterDataChapter(
+            'imgChapter',
+            'required'
+          )
+        }"
+      >
+        <input
+          type="file"
+          [id]="'imgChapter' + $index"
+          formControlName="imgChapter"
+          accept="image/*"
+          (change)="onFileChangeImageChapter($event)"
+        />
+        <label [for]="'imgChapter' + $index">{{ stringFileImageChapter }}</label>
+        <div class="img-item-input">
+          <img src="assets/imgs/image.png" alt="portada" />
+        </div>
+      </div>
+      <div
+        class="input-item-div"
+        [ngClass]="{
+          'is-invalid': hasErrorFormularyRegisterDataChapter(
+            'videoChapter',
+            'required'
+          )
+        }"
+      >
+        <input
+          type="file"
+          [id]="'videoChapter' + $index"
+          formControlName="videoChapter"
+          accept="video/*"
+          (change)="onFileChangeVideoChapter($event)"
+        />
+        <label [for]="'videoChapter' + $index">{{ stringFileVideoChapter }}</label>
+        <div class="img-item-input">
+          <img src="assets/imgs/video.png" alt="video" />
+        </div>
+      </div>
+      <div
+        class="input-item-div"
+        [ngClass]="{
+          'is-invalid':
+            hasErrorFormularyRegisterDataChapter(
+              'descriptionChapter',
+              'required'
+            ) ||
+            hasErrorFormularyRegisterDataChapter(
+              'descriptionChapter',
+              'minlength'
+            ) ||
+            hasErrorFormularyRegisterDataChapter(
+              'descriptionChapter',
+              'maxlength'
+            )
+        }"
+      >
+        <textarea
+          placeholder="DESCRIPCION"
+          formControlName="descriptionChapter"
+        ></textarea>
+      </div>
+      <div class="input-item-div">
+        @if (selectedIndex === numberVideos.length - 1) {
+        <input class="submit" type="submit" value="Guardar" />
+        } @else {
+        <input
+          class="submit"
+          type="button"
+          value="Guardar y Continuar"
+          (click)="onUpdateVideoByChapter(selectedIndex)"
+        />
+        }
+      </div>
+      <div class="container-close-x" (click)="goBackPart2()">
+        <img
+          style="filter: invert(1)"
+          src="assets/imgs/close-arrow.png"
+          alt="volver"
+        />
+      </div>
+    </div>
+  </form>
+  }
+</div>
+<div class="container-button">
+  <div class="container-button-img" (click)="changeIndex(-1)">
+    <img src="assets/imgs/close-arrow.png" alt="atras" />
+  </div>
+  <div class="container-button-img" (click)="changeIndex(1)">
+    <img src="assets/imgs/close-arrow.png" alt="seguir" />
+  </div>
+</div>
+} @else {
+<div class="container-register-data">
+  <form
+    class="container-register"
+    [formGroup]="formularyRegisterData"
+    (submit)="onSubmitFormularyRegisterData($event)"
+  >
+    @if (activateSectionFormulary.part1) {
+    <div class="div-form">
+      <div class="input-item-div">
+        <h2>Actualizar Serie</h2>
+      </div>
+      <div
+        class="input-item-div"
+        [ngClass]="{
+          'is-invalid':
+            hasError('title', 'required') ||
+            hasError('title', 'minlength') ||
+            hasError('title', 'maxlength')
+        }"
+      >
+        <input type="text" placeholder="TITULO" formControlName="title" />
+        <div class="img-item-input">
+          <img src="assets/imgs/movies.png" alt="titulo" />
+        </div>
+      </div>
+      <div
+        class="input-item-div"
+        [ngClass]="{
+          'is-invalid': hasError('category', 'required')
+        }"
+      >
+        <select class="select" formControlName="category" multiple>
+          <option value="" disabled selected>CATEGORIAS</option>
+          @for(category of listCategories; track $index) {
+          <option [value]="category">{{ category | uppercase }}</option>
+          }
+        </select>
+        <div class="img-item-input">
+          <img
+            style="z-index: 5"
+            src="assets/imgs/categorise.png"
+            alt="categorias"
+          />
+        </div>
+      </div>
+      <div
+        class="input-item-div"
+        [ngClass]="{
+          'is-invalid': hasError('date', 'required')
+        }"
+      >
+        <input type="date" formControlName="date" />
+      </div>
+      <div
+        class="input-item-div"
+        [ngClass]="{
+          'is-invalid':
+            hasError('rating', 'required') ||
+            hasError('rating', 'pattern') ||
+            hasError('rating', 'invalidRating')
+        }"
+      >
+        <input
+          class="number-input"
+          type="number"
+          placeholder="RATING"
+          formControlName="rating"
+          step="0.1"
+        />
+        <div class="img-item-input">
+          <img src="assets/imgs/rating.png" alt="rating" />
+        </div>
+      </div>
+      <div
+        class="input-item-div"
+        [ngClass]="{
+          'is-invalid':
+            hasError('description', 'required') ||
+            hasError('description', 'minlength') ||
+            hasError('description', 'maxlength')
+        }"
+      >
+        <textarea
+          placeholder="DESCRIPCION"
+          formControlName="description"
+        ></textarea>
+      </div>
+      <div class="input-item-div">
+        <input
+          class="submit"
+          type="button"
+          value="Continuar"
+          (click)="onContinue()"
+        />
+      </div>
+    </div>
+    <div class="container-close-x" (click)="closePanelData(false)">
+      <img src="assets/imgs/close-x.png" alt="cerrar" />
+    </div>
+    } @else if (activateSectionFormulary.part2) {
+    <div class="div-form">
+      <div class="input-item-div">
+        <h2>Multimedia Serie</h2>
+      </div>
+      <div
+        class="input-item-div"
+        [ngClass]="{
+          'is-invalid': hasError('img', 'required')
+        }"
+      >
+        <input
+          type="file"
+          id="img"
+          formControlName="img"
+          accept="image/*"
+          (change)="onFileChangeImage($event)"
+        />
+        <label for="img">{{ stringFileImage }}</label>
+        <div class="img-item-input">
+          <img src="assets/imgs/image.png" alt="portada" />
+        </div>
+      </div>
+      <div
+        class="input-item-div"
+        [ngClass]="{
+          'is-invalid': hasError('trailerVideo', 'required')
+        }"
+      >
+        <input
+          type="file"
+          id="trailerVideo"
+          formControlName="trailerVideo"
+          accept="video/*"
+          (change)="onFileChangeTrailerVideo($event)"
+        />
+        <label for="trailerVideo">{{ stringFileTrailerVideo }}</label>
+        <div class="img-item-input">
+          <img src="assets/imgs/trailer-video.png" alt="trailer" />
+        </div>
+      </div>
+      <div
+        class="input-item-div"
+        [ngClass]="{
+          'is-invalid':
+            hasError('numberEpisodes', 'required') ||
+            hasError('numberEpisodes', 'pattern')
+        }"
+      >
+        <input
+          class="number-input"
+          type="number"
+          placeholder="N° EPISODIOS"
+          formControlName="numberEpisodes"
+          step="1"
+          (change)="onNumberEpisodesChange($event)"
+        />
+        <div class="img-item-input">
+          <img src="assets/imgs/rating.png" alt="n° episodios" />
+        </div>
+      </div>
+      <div class="input-item-div">
+        <input class="submit" type="submit" value="Guardar y Continuar" />
+      </div>
+    </div>
+    <div class="container-close-x" (click)="goBackPart1()">
+      <img
+        style="filter: invert(1)"
+        src="assets/imgs/close-arrow.png"
+        alt="volver"
+      />
+    </div>
+    }
+  </form>
+</div>
+}

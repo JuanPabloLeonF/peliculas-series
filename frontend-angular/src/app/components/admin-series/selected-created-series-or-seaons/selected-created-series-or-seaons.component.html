@@ -1,0 +1,25 @@
+<div class="container-register-data">
+  <div class="div-form">
+    <h2>¿Que deseas crear?</h2>
+    <div class="item">
+      <select (change)="onValueChange($event)">
+        <option value="" selected disabled>SELECCIONA</option>
+        <option value="series">SERIE</option>
+        <option value="season">TEMPORADA</option>
+      </select>
+    </div>
+    <div class="container-close-x" (click)="goBackPart()">
+      <img src="assets/imgs/close-x.png" alt="volver" />
+    </div>
+    @if (valueSelected === "season") {
+    <div class="item">
+      <select (change)="onValueChangeSeries($event)">
+        <option value="" selected disabled>SELECCIONA LA SERIE</option>
+        @for (series of listSeries; track $index) {
+        <option [value]="series.id">{{ series.seasons[0].title | uppercase }}</option>
+        }
+      </select>
+    </div>
+    }
+  </div>
+</div>

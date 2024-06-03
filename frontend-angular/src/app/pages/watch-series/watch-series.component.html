@@ -1,0 +1,75 @@
+<main class="main">
+  <div
+    class="container-img"
+    [ngClass]="{ 'remove-mask video': activateRemove }"
+  >
+    @if (chapter) {
+    <video
+      #videoPlayer
+      [src]="baseUrl + chapter.video"
+      autoplay
+      [controls]="activateControls"
+      controlsList="nodownload"
+      (fullscreenchange)="onFullscreenChange($event)"
+    ></video>
+    } @else {
+    <img [src]="baseUrl + season.img" [alt]="season.title" />
+    }
+    <div class="container-season">
+      <div class="select-season">
+        <select [(ngModel)]="valueSelect" (ngModelChange)="selectedSeason()">
+          <option value="" disabled>Temporadas</option>
+          @for (season of dataSeries.seasons; track $index) {
+          <option [value]="season.id">{{ season.title }}</option>
+          }
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="details-series">
+    <div class="container-title">
+      @if (chapter) {
+      <h2>{{ chapter.title | uppercase }}</h2>
+      } @else {
+      <h2>{{ season.title | uppercase }}</h2>
+      }
+    </div>
+    <div class="container-description">
+      @if (chapter) {
+      <p>{{ chapter.description }}</p>
+      } @else {
+      <p>{{ season.description }}</p>
+      }
+    </div>
+    <div class="container-slider">
+      <div class="container-list-chapters">
+        @for (chapter of videos; track $index) {
+        <div
+          class="items"
+          [style.transform]="'translateX(' + -selectedIndex * 16 + 'rem)'"
+          (click)="getDataVideos(chapter)"
+        >
+          <img [src]="baseUrl + chapter.img" [alt]="$index" />
+          <div class="item-description">
+            <h5>{{ chapter.title | uppercase }}</h5>
+          </div>
+        </div>
+        }
+      </div>
+      <div class="container-button-slider">
+        <div class="container-button-left" (click)="changeIndex(-1)">
+          <img src="assets/imgs/close-arrow.png" alt="izquierda" />
+        </div>
+        <div class="container-button-right" (click)="changeIndex(1)">
+          <img src="assets/imgs/close-arrow.png" alt="derecha" />
+        </div>
+      </div>
+    </div>
+    <div class="container-button-watch" (click)="watchChapter()">
+      <div class="figure-video-img">
+        <img src="assets/imgs/icon-video.png" alt="mirar" />
+      </div>
+      <h4>Mirar</h4>
+    </div>
+  </div>
+</main>

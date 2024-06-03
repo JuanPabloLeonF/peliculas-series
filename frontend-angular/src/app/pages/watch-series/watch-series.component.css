@@ -1,0 +1,323 @@
+.main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.container-season {
+  position: absolute;
+  top: 7%;
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.select-season {
+  width: 50%;
+  height: 50%;
+}
+
+.select-season select {
+  width: 100%;
+  height: 100%;
+  border: none;
+  backdrop-filter: blur(5px);
+  border-radius: 1rem;
+  outline: none;
+  color: var(--white-color);
+  font-size: 1rem;
+  padding: 0 0.5rem;
+  cursor: pointer;
+	background: rgba(255, 255, 255, 0.1);
+  position: relative;
+  transition: all 0.25s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.select-season select:hover {
+  background: var(--black-color);
+}
+
+.select-season select option,
+.select-season select:hover option {
+  background: var(--black-color);
+}
+
+.select-season select option:checked {
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+
+.container-img {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.container-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.4);
+}
+
+.container-img video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.4);
+}
+
+.details-series {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  z-index: 5;
+  padding-top: 5rem;
+}
+
+.container-title {
+  width: 100%;
+  text-shadow: 0 0 2rem var(--blue-alpha-color);
+  font-weight: bold;
+  text-align: center;
+}
+
+.container-title h2 {
+  color: var(--white-color);
+  font-size: 2rem;
+}
+
+.container-description {
+  width: 100%;
+  text-align: justify;
+  color: var(--white-alpha-color);
+  font-size: 0.9rem;
+  line-height: 0.5rem;
+}
+
+.container-description p {
+  line-height: 1.2rem;
+}
+
+.container-slider {
+  width: 100vw;
+  position: relative;
+}
+
+.container-list-chapters {
+  width: 100%;
+  height: 15rem;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: start;
+  gap: 1rem;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  flex-wrap: nowrap;
+  padding: 0 1rem;
+  padding-top: 2rem;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.items {
+  width: 15rem;
+  height: auto;
+  flex-shrink: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.item-description {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: end;
+  padding: 1rem;
+  color: var(--white-color);
+  background-color: var(--black-alpha-color);
+}
+
+.items img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.items:hover img,
+.items:hover .item-description {
+  box-shadow: 0 0 0.8rem var(--blue-alpha-color);
+  transform: translateY(-0.5rem);
+}
+
+.container-button-slider {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  display: none;
+}
+
+.container-button-left {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  filter: invert(1);
+}
+
+.container-button-right {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  rotate: 180deg;
+  filter: invert(1);
+}
+
+.container-button-watch {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  width: 5rem;
+  height: 2rem;
+  color: var(--black-color);
+  gap: 0.5rem;
+  background: rgba(5,63,85,1);
+  background: -moz-linear-gradient(322deg, rgba(23,170,179,1) 0%, rgba(5,63,85,1) 50%, rgba(0,186,187,1) 100%);
+  background: -webkit-linear-gradient(322deg, rgba(23,170,179,1) 0%, rgba(5,63,85,1) 50%, rgba(0,186,187,1) 100%);
+  background: linear-gradient(322deg, rgba(23,170,179,1) 0%, rgba(5,63,85,1) 50%, rgba(0,186,187,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#17aab3",endColorstr="#00babb",GradientType=1);
+  transition: all 0.5s ease-out;
+  margin-bottom: 3rem;
+}
+
+.container-button-watch:hover {
+  background-color: var(--blue-color);
+  box-shadow: 0px 0px 10px 0px var(--blue-alpha-color);
+}
+
+.remove-mask video {
+  -webkit-mask-image: none;
+  mask-image: none;
+  filter: none;
+}
+
+
+@media screen and (min-width: 768px) {
+  .main {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 1fr;
+    z-index: 5;
+  }
+
+  .container-img {
+    position: static;
+  }
+
+  .container-img video,
+  .container-img img {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.9),
+      transparent
+    );
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), transparent);
+    filter: none;
+  }
+
+  .details-series {
+    width: 100%;
+    height: 100%;
+    padding: 0 1rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1rem;
+    background-color: var(--black-color);
+  }
+
+  .container-title {
+    width: 100%;
+    text-shadow: 0 0 2rem var(--blue-alpha-color);
+    font-weight: bold;
+    text-align: left;
+    height: 13rem;
+  }
+
+  .container-title h2 {
+    color: var(--white-color);
+    font-size: 5rem;
+  }
+
+  .container-description {
+    width: 100%;
+    text-align: justify;
+    color: var(--white-color);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    height: 10rem;
+  }
+
+  .container-description p {
+    line-height: 1.5rem;
+  }
+
+  .container-slider {
+    width: 100%;
+    height: 14rem;
+  }
+
+  .container-button-slider {
+    display: flex;
+  }
+
+  .remove-mask video {
+    -webkit-mask-image: none;
+    mask-image: none;
+    filter: none;
+  }
+
+  .container-button-watch {
+    display: none;
+  }
+
+  .container-season {
+    width: 40%;
+    top: 30%;
+  }
+}

@@ -1,0 +1,106 @@
+<section class="container-section">
+  @if (showRegisterPanel) {
+  <app-register-series
+    [idSeriesSelected]="idSeriesSelected"
+    (closePanel)="onRegisterDataPanel($event)"
+  />
+  } @if (showUpdateDataPanel) {
+  <app-update-series
+    (closePanel)="onUpdateDataPanel($event)"
+    [seriesSelected]="seriesSelected"
+  />
+  } @if (showSelectedSeriesPanel) {
+  <app-selected-created-series-or-seaons
+    (closeSelectedCreated)="onShowSelectedSeriesPanel($event)"
+    (activate)="onRegisterDataPanel($event)"
+    (idSeriesSelected)="onIdSeriesSelected($event)"
+  />
+  }
+
+  <div class="container-section-one">
+    <div class="container-item">
+      <h3>SERIES ( {{ listSeries.length }} )</h3>
+      <div class="container-img-open" (click)="onMenu()">
+        <img src="assets/imgs/close-arrow.png" alt="abrir" />
+      </div>
+    </div>
+    <div class="container-item">
+      <div class="container-selects">
+        <select
+          [(ngModel)]="valueSelect"
+          (ngModelChange)="onChangeSelectValue()"
+        >
+          <option value="ALL">TODOS</option>
+          @for (category of listCategories; track $index) {
+          <option [value]="category">{{ category | uppercase }}</option>
+          }
+        </select>
+      </div>
+      <div class="search-data">
+        <input
+          type="text"
+          placeholder="Buscar..."
+          [(ngModel)]="searchValue"
+          (ngModelChange)="onChangeSearchValue()"
+        />
+      </div>
+      <div
+        class="container-img-add-data"
+        (click)="onShowSelectedSeriesPanel(true)"
+      >
+        <img src="assets/imgs/show-more.png" alt="agregar" />
+      </div>
+    </div>
+  </div>
+  <div class="container-section-two">
+    <div class="container-movies">
+      @for(series of listSeries; track $index) { @for(season of series.seasons;
+      track $index) {
+      <div class="movie" (click)="onUpdateDataMovie(series, season)">
+        <div class="container-header">
+          <div class="container-img">
+            <img [src]="baseUrl + season.img" [alt]="season.title" />
+          </div>
+          <h3>{{ season.title }}</h3>
+        </div>
+        <div class="container-body">
+          <div class="items-information">
+            <div class="container-information-img">
+              <div class="container-img-body">
+                <img src="assets/imgs/rating.png" alt="rating" />
+              </div>
+              <h3>Rating</h3>
+            </div>
+            <h3>{{ season.rating }}</h3>
+          </div>
+          <div class="items-information">
+            <div class="container-information-img">
+              <div class="container-img-body">
+                <img src="assets/imgs/date.png" alt="fecha" />
+              </div>
+              <h3>Fecha</h3>
+            </div>
+            <h3>{{ season.date | date : "yyyy" }}</h3>
+          </div>
+          <div class="items-information">
+            <div class="container-information-img">
+              <div class="container-img-body">
+                <img src="assets/imgs/categorise.png" alt="categorias" />
+              </div>
+              <h3>Categorias</h3>
+            </div>
+            <h4>{{ series.category | slice : 0 : 2 }}</h4>
+          </div>
+        </div>
+        <div
+          class="container-button-delete"
+          title="Eliminar pelicula"
+          (click)="onDeleteData($event, season.id)"
+        >
+          <img src="assets/imgs/trash.png" alt="borrar" />
+        </div>
+      </div>
+      } }
+    </div>
+  </div>
+</section>

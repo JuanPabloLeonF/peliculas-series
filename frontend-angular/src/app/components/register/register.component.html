@@ -1,0 +1,87 @@
+<form
+  class="container-admin"
+  [formGroup]="formularyRegister"
+  (submit)="onSubmit($event)"
+>
+  <div class="div-form">
+
+    <div class="input-item-div">
+      <h2>Registrarse</h2>
+    </div>
+
+    <div
+      class="input-item-div"
+      [ngClass]="{
+        'is-invalid':
+          hasError('username', 'required') ||
+          hasError('username', 'minlength') ||
+          hasError('username', 'maxlength') ||
+          hasError('username', 'pattern')
+      }"
+    >
+      <input type="text" placeholder="USUARIO" formControlName="username" />
+      <div class="img-item-input">
+        <img src="assets/imgs/user-logo.png" alt="usuario" />
+      </div>
+    </div>
+
+    <div
+      class="input-item-div"
+      [ngClass]="{
+        'is-invalid':
+          hasError('email', 'required') ||
+          hasError('email', 'minlength') ||
+          hasError('email', 'maxlength') ||
+          hasError('email', 'email')
+      }"
+    >
+      <input type="email" placeholder="CORREO" formControlName="email" />
+      <div class="img-item-input">
+        <img style="width: 1.7rem;" src="assets/imgs/email-logo.png" alt="correo" />
+      </div>
+    </div>
+    
+    <div
+      class="input-item-div"
+      [ngClass]="{
+        'is-invalid':
+          hasError('name', 'required') ||
+          hasError('name', 'minlength') ||
+          hasError('name', 'maxlength') ||
+          hasError('name', 'pattern')
+      }"
+    >
+      <input type="text" placeholder="NOMBRE" formControlName="name" />
+      <div class="img-item-input">
+        <img src="assets/imgs/user-logo.png" alt="nombre" />
+      </div>
+    </div>
+
+    <div
+      class="input-item-div"
+      [ngClass]="{
+        'is-invalid':
+          hasError('password', 'required') ||
+          hasError('password', 'pattern') ||
+          hasError('password', 'minlength') ||
+          hasError('password', 'maxlength')
+      }"
+    >
+      <input
+        type="password"
+        placeholder="CONTRASEÑA"
+        formControlName="password"
+      />
+      <div class="img-item-input">
+        <img src="assets/imgs/password-logo.png" alt="contraseña" />
+      </div>
+    </div>
+    <div class="input-item-div">
+      <input class="submit" type="submit" value="Registrarse" />
+    </div>
+  </div>
+
+  <div class="container-buttom" (click)="goBack()">
+    <img src="assets/imgs/close-arrow.png" alt="volver">
+  </div>
+</form>

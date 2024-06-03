@@ -1,0 +1,111 @@
+<div class="container-register-data">
+    <form
+      class="container-register"
+      [formGroup]="formularyRegisterData"
+      (submit)="onSubmit($event)"
+    >
+        <div class="div-form">
+          <div class="input-item-div">
+            <h2>Registrar Usuario</h2>
+          </div>
+          <div
+            class="input-item-div"
+            [ngClass]="{
+              'is-invalid':
+                hasError('username', 'required') ||
+                hasError('username', 'minlength') ||
+                hasError('username', 'maxlength')
+            }"
+          >
+            <input type="text" placeholder="USERNAME" formControlName="username" />
+            <div class="img-item-input">
+              <img src="assets/imgs/perfil.png" alt="username" />
+            </div>
+          </div>
+          <div
+            class="input-item-div"
+            [ngClass]="{
+              'is-invalid':
+                hasError('email', 'required') ||
+                hasError('email', 'email') ||
+                hasError('email', 'maxlength') ||
+                hasError('email', 'minlength')
+            }"
+          >
+            <input type="text" placeholder="CORREO" formControlName="email" />
+            <div class="img-item-input">
+              <img style="filter: invert(1);" src="assets/imgs/email-logo.png" alt="email" />
+            </div>
+          </div>
+          <div
+            class="input-item-div"
+            [ngClass]="{
+              'is-invalid':
+                hasError('name', 'required') ||
+                hasError('name', 'maxlength') ||
+                hasError('name', 'minlength') ||
+                hasError('name', 'pattern')
+            }"
+          >
+            <input type="text" placeholder="NOMBRE" formControlName="name" />
+            <div class="img-item-input">
+              <img src="assets/imgs/perfil.png" alt="nombre" />
+            </div>
+          </div>
+          <div
+            class="input-item-div"
+            [ngClass]="{
+              'is-invalid':
+                hasError('password', 'required') ||
+                hasError('password', 'maxlength') ||
+                hasError('password', 'minlength') ||
+                hasError('password', 'pattern')
+            }"
+          >
+            <input type="password" placeholder="CONTRASEÑA" formControlName="password" />
+            <div class="img-item-input">
+              <img style="filter: invert(1);" src="assets/imgs/password-logo.png" alt="contraseña" />
+            </div>
+          </div>
+          <div
+            class="input-item-div"
+            [ngClass]="{
+              'is-invalid': hasError('admin', 'required')
+            }"
+          >
+            <select class="select" formControlName="admin">
+              <option value="" disabled selected>ROL</option>
+              @for(selects of listUsersSelects; track $index) {
+                <option [value]="selects == 'Administrador' ? true : false">{{selects | uppercase}}</option>
+              }
+            </select>
+            <div class="img-item-input">
+              <img style="z-index: 5;" src="assets/imgs/admin.png" alt="admin" />
+            </div>
+          </div>
+          <div
+          class="input-item-div"
+          [ngClass]="{
+            'is-invalid':
+              hasError('image', 'required')
+          }"
+        >
+          <input type="file" id="image" formControlName="image" accept="image/*" (change)="onFileChangeImage($event)" />
+          <label for="image">{{stringFileImage}}</label>
+          <div class="img-item-input">
+            <img src="assets/imgs/image.png" alt="perfil" />
+          </div>
+        </div>
+          <div class="input-item-div">
+            <input
+              class="submit"
+              type="submit"
+              value="Guardar"
+            />
+          </div>
+        </div>
+        <div class="container-close-x" (click)="closePanelData(false)">
+          <img src="assets/imgs/close-x.png" alt="cerrar" />
+        </div>
+    </form>
+  </div>  

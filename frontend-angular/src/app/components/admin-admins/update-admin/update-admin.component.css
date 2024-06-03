@@ -1,0 +1,221 @@
+.container-register-data {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(41, 41, 41, 0.827);
+    backdrop-filter: blur(5px);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+  
+  .container-register {
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 22rem;
+    max-width: 30rem;
+    height: 30rem;
+    max-height: 50rem;
+    border-radius: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--white-color);
+    position: relative;
+  }
+  
+  .container-register-part2 {
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 22rem;
+    max-width: 30rem;
+    height: 22rem;
+    max-height: 50rem;
+    border-radius: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--white-color);
+    position: relative;
+  }
+  
+  .container-close-x {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1.7rem;
+    height: 1.7rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+  }
+  
+  .div-form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .input-item-div {
+    width: 80%;
+    position: relative;
+  }
+  
+  .input-item-div input {
+    width: 100%;
+    height: 2.5rem;
+    border-radius: 1rem;
+    outline: none;
+    border: none;
+    border: 1px solid var(--white-color);
+    background: none;
+    color: var(--white-color);
+    padding-left: 1rem;
+  }
+  
+  .input-item-div .img-item-input {
+    position: absolute;
+    width: 1.7rem;
+    height: auto;
+    top: 10%;
+    right: 4%;
+    filter: invert(1);
+  }
+  
+  .input-item-div .img-item-input img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .input-item-div .submit {
+    background-color: var(--white-color);
+    color: var(--black-color);
+    cursor: pointer;
+  }
+  
+  .div-form .input-item-div:nth-child(6) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  
+  .div-form .input-item-div a:hover {
+    border-color: var(--blue-alpha-color);
+    color: var(--blue-alpha-color);
+    opacity: 1;
+  }
+  
+  .input-item-div input::placeholder {
+    color: var(--white-color);
+  }
+  
+  .input-item-div a {
+    cursor: pointer;
+  }
+  
+  .number-input[type="number"]::-webkit-inner-spin-button,
+  .number-input[type="number"]::-webkit-outer-spin-button {
+    appearance: none;
+  }
+  
+  .input-item-div textarea {
+    width: 100%;
+    height: 5rem;
+    border-radius: 0.5rem;
+    outline: none;
+    border: none;
+    border: 1px solid var(--white-color);
+    background: none;
+    color: var(--white-color);
+    resize: none;
+    text-align: justify;
+    padding: 0.5rem;
+  }
+  
+  .input-item-div textarea::placeholder {
+    color: var(--white-color);
+  }
+  
+  .select {
+    width: 100%;
+    height: 2.5rem;
+    border-radius: 1rem;
+    outline: none;
+    border: none;
+    border: 1px solid var(--white-color);
+    background: none;
+    color: var(--white-color);
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    overflow: hidden;
+    padding-left: 1rem;
+  }
+  
+  .select option {
+    padding: 0.7rem 1rem;
+    overflow: hidden;
+    color: var(--black-color);
+  }
+  
+  .input-item-div:nth-child(3) {
+    z-index: 99;
+  }
+  
+  .input-item-div {
+    text-transform: uppercase;
+  }
+  
+  .is-invalid input,
+  .is-invalid select,
+  .is-invalid textarea {
+    border: 1px solid red;
+  }
+  
+  .input-item-div input[type="file"] {
+    visibility: hidden;
+  }
+  
+  .input-item-div:nth-child(2),
+  .input-item-div:nth-child(3),
+  .input-item-div:nth-child(4) {
+    height: 2.5rem;
+    position: relative;
+  }
+  
+  .input-item-div label {
+    width: 100%;
+    border-radius: 1rem;
+    outline: none;
+    border: none;
+    border: 1px solid var(--white-color);
+    background: none;
+    color: var(--white-color);
+    padding-left: 1rem;
+    cursor: pointer;
+    height: 2.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .container-register {
+      width: 40rem;
+    }
+  
+    .container-register-part2 {
+      width: 40rem;
+      height: 30rem;
+    }
+  }
+  

@@ -1,0 +1,33 @@
+<div class="body-main">
+    @if (listDataByCategoryAction.length > 0) {
+        <app-list-movies 
+        [listDataByCategory]="listDataByCategoryAction" 
+        [nameCategory]="categoryAction" 
+        (dataSelected)="onDataSelected($event)" 
+        />
+    }
+
+    @if (listDataByCategoryComedy.length > 0) {
+        <app-list-movies 
+        [listDataByCategory]="listDataByCategoryComedy" 
+        [nameCategory]="categoryComedy"
+        (dataSelected)="onDataSelected($event)"
+        />    
+    }  
+
+    @if (listDataByCategoryFantasy.length > 0) {
+        <app-list-movies
+        [listDataByCategory]="listDataByCategoryFantasy"
+        [nameCategory]="categoryFantasy"
+        (dataSelected)="onDataSelected($event)"
+        /> 
+    }
+
+    @if (listDataByCategoryTerror.length > 0) {
+        <app-list-movies
+        [listDataByCategory]="listDataByCategoryTerror"
+        [nameCategory]="categoryTerror"
+        (dataSelected)="onDataSelected($event)"
+        /> 
+    }
+</div>

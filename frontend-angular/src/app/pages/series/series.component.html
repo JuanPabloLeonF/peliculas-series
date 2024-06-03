@@ -1,0 +1,5 @@
+<main class="main" >
+    <video [src]="baseUrl + seriesDataSelected.seasons[0].trailerVideo" autoplay loop></video>
+    <app-header-main [dataSelect]="seriesDataSelected" [seriesActivate]="seriesActivate"/>
+    <app-body-main [listData]="listSeries" (selectedData)="onSeriesSelected($event)" />
+</main>

@@ -1,0 +1,58 @@
+<header class="header">
+  <nav class="menu" [style.transform]="menuTransform">
+    <div class="header-img">
+      <img src="assets/imgs/logo-sin-fondo.png" alt="Logo Movies" />
+    </div>
+    @if (!isAuthenticate) {
+    <a
+      routerLinkActive="active"
+      routerLink="init"
+      [ngClass]="{ active: menuSelected === 'init' }"
+      (click)="onOption('init')"
+      >Inicio</a
+    >
+    } @else {
+    <a
+      routerLinkActive="active"
+      routerLink="series"
+      [ngClass]="{ active: menuSelected === 'series' }"
+      (click)="onOption('series')"
+      >Series</a
+    >
+    <a
+      routerLinkActive="active"
+      routerLink="movies"
+      [ngClass]="{ active: menuSelected === 'movies' }"
+      (click)="onOption('movies')"
+      >Peliculas
+    </a>
+    @if (admin !== true) {
+      <a
+      routerLinkActive="active"
+      routerLink="init"
+      (click)="onLogout()"
+      >Salir
+    </a>
+    }
+    @if (admin) {
+    <a
+      routerLinkActive="active"
+      routerLink="admin"
+      [ngClass]="{ active: menuSelected === 'admin' }"
+      (click)="onOption('admin')"
+      >Admin</a
+    >
+    }
+   }
+    <div class="img-close" (click)="hideMenu()">
+      <img src="assets/imgs/close-arrow.png" alt="Cerrar" />
+    </div>
+  </nav>
+  <div class="img-open" (click)="showMenu()" [style.display]="displayButton">
+    <img src="assets/imgs/close-arrow.png" alt="Abrir" />
+  </div>
+  <div class="search">
+    <input type="text" placeholder="Buscar..." [(ngModel)]="valueInputSearch" />
+  </div>
+</header>
+<app-search-data [valueInputSearch]="valueInputSearch" />

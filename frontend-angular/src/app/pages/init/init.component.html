@@ -1,0 +1,11 @@
+<main class="main">
+  @if (loginValue) {
+  <app-login (dataSection)="activateSection($event)" />
+  } @else if (registerValue) {
+  <app-register (goBackValue)="activateSection($event)" />
+  } @else if (passwordValue) {
+  <app-password (goBackValue)="activateSection($event)" />
+  } @else {
+  <app-login (dataSection)="activateSection($event)" />
+  }
+</main>

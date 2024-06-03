@@ -1,0 +1,71 @@
+<main class="main">
+    <aside class="aside" [ngClass]="{ 'aside-open': menu }">
+        <div class="container-item-first">
+            <div class="container-img">
+                <img src="assets/imgs/logo-sin-fondo.png" alt="logo">
+            </div>
+            <div class="container-text">
+                <h3>MOVIES PELIS</h3>
+                <h4>Administrador</h4>
+            </div>
+            <div class="container-img-close" (click)="onMenu(false)">
+                <img src="assets/imgs/close-arrow.png" alt="cerrar">
+            </div>
+        </div>
+        <div class="container-item">
+            <div class="container-menu" (click)="onSection('movies')">
+                <div class="container-img filter-invert">
+                    <img src="assets/imgs/movies.png" alt="PELICULAS">
+                </div>
+                <div class="container-text">
+                    <h3>PELICULAS</h3>
+                </div>
+            </div>
+            <div class="container-menu" (click)="onSection('series')">
+                <div class="container-img filter-invert">
+                    <img src="assets/imgs/series.png" alt="SERIES">
+                </div>
+                <div class="container-text">
+                    <h3>SERIES</h3>
+                </div>
+            </div>
+            <div class="container-menu" (click)="onSection('admins')">
+                <div class="container-img filter-invert">
+                    <img src="assets/imgs/admin.png" alt="ADMINISTRADORES">
+                </div>
+                <div class="container-text">
+                    <h3>ADMINISTRADORES</h3>
+                </div>
+            </div>
+            <div class="container-menu" (click)="onSection('profile')">
+                <div class="container-img filter-invert">
+                    <img style="width: 3rem;"  src="assets/imgs/perfil.png" alt="PERFIL">
+                </div>
+                <div class="container-text">
+                    <h3>PERFIL</h3>
+                </div>
+            </div>
+            <div class="container-menu" (click)="onMovies()">
+                <div class="container-img">
+                    <img class="back-img" src="assets/imgs/logo-sin-fondo.png" alt="VOLVER">
+                </div>
+                <div class="container-text">
+                    <h3>VOLVER</h3>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    @if (sectionActive.activeMovies) {
+        <app-admin-movies (onMenuBoolean)="onMenu($event)" class="height" />
+    } @else if (sectionActive.activeSeries) {
+        <app-admin-series (onMenuBoolean)="onMenu($event)"  class="height" />
+    } @else if (sectionActive.activeAdmin) {
+        <app-admin-admins (onMenuBoolean)="onMenu($event)"  class="height" />
+    } @else if (sectionActive.activeProfile) {
+        <app-admin-profile (onMenuBoolean)="onMenu($event)" class="height" />
+    } @else {
+        <app-admin-movies (onMenuBoolean)="onMenu($event)"  class="height" />
+    }
+    
+</main>
